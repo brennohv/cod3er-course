@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        function ajax(config) {
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true) //Vou abrir uma requisição referenciada no metodo que pode ser GET, 2 parametro é uma url que espero receber dentro de config, 3 se é assincrono ou nao
+            xhr.onreadystatechange = e => { // Esse evento vai ser chamado sempre que o status da requisição mudar
+                if (xhr.readyState === 4) { // tem 5 status em readyState; 0nao iniciada, 1connection established, 2request received, 3processing request, 4request finished
+                    // Neste exemplo quero so quando estiver finalizada 
+                    if (xhr.status === 200) { // Status 200 OK DEU CERTO
+                        config.sucesso(xhr.responseXML) //Retorna os dados de resposta como dados XML
+                    } else if (xhr.status >= 400) { // Status 400 erro
+                        config.erro({ //Tratando o erro 
+                            codigo: xhr.status,
+                            texto: xhr.statusText
+                        })
+                    }
+                }
+            }
+            xhr.send()
+        }
+
+        ajax({ // Como na function ajax atribui o parametro(config) a varias propriedades, preciso sempre chamar a function ({}) como object
+            url: "dados/estados.xml",
+            metodo: 'get',
+            sucesso(resposta) {
+                const estados = resposta.getElementsByTagName('estado') // Pegando o elemento pelo name 'estado'
+                const itens = Array.from(estados).reduce(
+                    (html, estado) => html + `<li>${estado.attributes.nome.value}</li>`, '' // informei que meu acumulador é uma string vazia '', 
+                )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            },
+            erro(e) {
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+                document.body.appendChild(msg)
+            }
+
+        })
+        
+    </script>
+</body>

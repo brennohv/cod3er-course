@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+        /*
+            Em linhas gerais: . . .
+            1. Regra com !important
+            2. seletores mais especificos
+            3. ultima regra processada (empate)
+        */
+        p {
+            background-color: #aaa;
+        }
+
+        .observacao {    /* .observacao é mais especifico que o p, resumi-se que que tem preferencia nao importando a ordem no codigo. */
+            background-color: #5f5;
+            border: dashed 5px;
+            padding: 200px!important;  /* Aqui o !important burlou a regra da especificidade, que no caso era o p.observacao */
+            font-size: 20px;
+        }
+
+        p.observacao {  /* p.observacao é mais especifico que o .observacao, resumi-se que que tem preferencia nao importando a ordem no codigo. */
+            padding: 2px;
+            background: linear-gradient(to right, red, yellow);
+
+        }
+    </style>
+</head>
+
+<body>
+    <p class='observacao'>Olha essa observação!!!!</p>
+</body>
+
+</html>

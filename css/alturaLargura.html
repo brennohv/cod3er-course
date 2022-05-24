@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html> <!-- A tag HTML e BODY tem a altura por padrao do tamanho equivalente ao seus elementos -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Altura e Largura</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {  /* body por padrao nao ocupa a tela inteira referente a altura, por isso nao consigo atribuir valor por porcentagem, o que acontece ao contrario em largura. */
+            font-size: 40px;
+            background-color: coral;
+            height: 100%;
+        }
+
+        div {
+            background-color: seagreen;
+        }
+
+        span {
+            background-color: dodgerblue;
+        }
+
+        span, div {
+            width: 50%;
+            height: 250px;
+            height: 50%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Título</div>
+    <span>Subtítulo</span>
+</body>
+
+</html>

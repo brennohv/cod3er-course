@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Media Query</title>
+    <style>
+        div {
+            font-size: 40px;
+            margin: 20px;
+            padding: 20px;
+            background-color: coral;
+            border: solid 5px;
+            display: none;
+        }
+
+/* @media (colocar as condições para serem executadas) { informar em qual elemento, classe, ID e o que fazer.} */
+
+        @media (max-width: 600px) { /* Informei que vai ser executado se tiver uma largura max de 600px. */
+            .muito-pequeno { display: block;}
+        }
+
+        @media (max-width: 1000px), (orientation: landscape) {  /* Informei que vai ser executado se tiver uma largura max de 1000px ou a tela em paisagem. */
+            .pequeno-retrato { display: block; }
+        }
+
+        @media (min-width: 500px) and (max-width: 1000px) { /* Informei que vai ser executado se tiver uma largura min de 500px e uma largura max de 1000px.   AND funciona como OU . */
+            .intervalo {display: block;}
+        }
+    </style>
+</head>
+<body>
+    <div class="muito-pequeno">Muito Pequeno</div>
+    <div class="pequeno-retrato">Pequeno ou Retrato</div>
+    <div class="intervalo">Intervalo</div>
+</body>
+</html>

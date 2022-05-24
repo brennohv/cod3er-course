@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #04</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+                <option value="pt-br">Português (Brasil)</option>
+                <option value="en-us">Inglês (Americano)</option>
+            </select>
+        <button wm-submit>Pesquisar</button>
+    </form>
+    <script>
+        const submit = document.querySelector('[wm-submit]')
+        submit.onclick = function(e) { // No click recebo uma function com evento 
+            e.preventDefault() // parando o evento padrão 
+
+            const form = e.target.parentNode // quero pegar o elemento que esta envolvendo, que no caso é o form 
+            const formData = new FormData(form) // Consegue os dados do formulario apartir de um objeto FormData
+            formData.append('ajax', true)
+            console.log(formData.get("q")) // pegando o name 
+            console.log(formData.has('hl')) // Vendo se tem alguma propriedade 'hl'
+
+            for(let dado of formData) { //fazendo um laço em cima dos valores de formData,  NAO SE ESQUEÇA DE COLOCAR LET no parametro, para ficar visivel comente dentro do escopo e nao sobscrever nada no global 
+                console.log(dado)
+            }
+        }
+    </script>
+</body>
+

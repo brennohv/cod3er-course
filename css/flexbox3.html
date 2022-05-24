@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #03</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        .flex-container {
+            display: flex; /* Por padrão o Main é row */
+            flex-direction: row; /* Por padrão é row */
+        }
+
+        .flex-container div {
+            flex-basis: 100px; /* É a forma correta de dar a dimensão para os itens, no sentido do Main axis, se for Row vai ser largura, se for Columns vai ser altura. */
+            width: 200px; /* Posso informar assim também porem se tiver o flex-basis ele vai desconsiderar essa largura e vai aplicar a do flex. */
+        }
+
+        .flex-container div:nth-child(4) {
+            /* GROW(Se for preciso aumentar, qual vai ser a proporção) SHRINK(Se for preciso reduzir, qual vai ser a proporção) BASIS(Dimensao do elemento) */
+
+            flex: 3 6 100px; /* GROW SHRINK BASIS      flex: eu setei as 3 informações de uma vez. */    
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel">3</div>
+        <div class="tag nolabel">4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

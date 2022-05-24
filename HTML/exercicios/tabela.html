@@ -1,0 +1,53 @@
+<table> <!-- Tabela -->
+    <caption>Produtos</caption> <!--  <caption> O que é essa tabela. -->
+    <thead> <!-- THEAD é o cabeçalho da tabela -->
+        <tr>
+            <th>Produto</th>     <!-- TH significa 'cabeçalho da tabela', so se usa no THEAD, no restante usa TD. -->
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+    </thead>  
+    <tbody> <!-- TBODY é o corpo da tabela -->
+        <tr> <!-- TR significa linha de tabela... a cada TR é adicionado uma linha -->
+            <td>Ipad</td> 
+            <td>3289,00</td>
+            <td>5</td>                  <!-- TD dados da tabela -->
+            <td>16445,00</td>
+        </tr>
+        <tr>
+            <td>Sansung S9</td>         <!-- TD dados da tabela -->
+            <td>1000,00</td>
+            <td>10</td>
+            <td>10000,00</td>
+        </tr>
+    </tbody>
+    <tfoot> <!-- TFOOT é o rodapé da tabela -->
+        <tr>
+            <td colspan="3">Total</td> <!-- colspan significa quantas linhas quero que ocupa -->
+            <td>37637,00</td>
+        </tr>
+    </tfoot>  
+</table>
+
+<!-- Style e para colocar stilo -->
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px
+    }
+    thead tr {
+        border-bottom: solid 3px #444;
+    }
+    tbody tr:hover {
+        background-color: silver;
+    }
+    tfoot {
+        background-color: #444;
+        color: #fff;
+        font-weight: bold;
+    }
+</style>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/axios.js"></script> <!-- O professor nao instalou com NPM, percebi que tem uma pasta que me parece o axios em js, e aqui estou referenciando ele no meu codigo -->
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        const url = 'dados/estados.json'
+        axios(url).then(resp => {
+            const itens = resp.data.reduce(  //resp.data ja tenho o parse do json, agora um objeto e ja consigo realizar functions com esses dados
+                (html, estado) => html + `<li>${estado.nome}</li>`, '')
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul`)
+        })
+    </script>
+</body>

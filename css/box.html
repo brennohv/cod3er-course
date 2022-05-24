@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Box Model</title>
+    <style>
+        body {font-size: 80px;}
+        .c1 {background-color: orange;}
+        .c2 {background-color: skyblue;}
+        .c3 {background-color: tomato;}
+
+        div {
+            float: left;
+            padding-top: 100px; /* Aplicando o espaçamento  interno no topo */
+            padding: 10px 50px 100px 50px; /* Espaçamento interno no sentido horario cima, direita, baixo, esquerda. */
+            padding: 100px 50px; /* Primeiro elemento é o espaçamento interno em cima e em baixo, segundo lado esquerdo e direito. */
+            padding: 50px; /* Aplicando o espaçamento interno em todos os lados */
+            margin: 0px 20px; /* Espaçamento externo, de uma div para outra */
+            border: solid 10px black; /* Borda dos elementos */
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1">1</div>
+    <div class="c2">2</div>
+    <div class="c3">3</div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!-- * Para colocar CSS em ID  #NomeDoID { coloco as edições }
+     * Para colocar CSS em Class .NomeDaClass { coloco as edições }
+     * Caso queira deixar separado o CSS do HTML, preciso referenciar ele no HTML, usando a seguinte nomeclatura
+       link:css   e na parte de href eu referencio o arquivo que esta o CSS -->
+
+<html>
+    <head>
+        <title>Um Pouco de CSS</title>
+        <link rel="stylesheet" href="poucoDeCSS.css">
+        <STYLe>
+            h1 {
+                font-size: 20px;
+            }
+
+            .fundoVermelho {
+                background-color: red;
+            }
+             
+            .negrito {
+                 font-weight: bold;
+             }
+
+           
+        </STYLe>
+    </head>
+    <body>
+        <h1>CSS</h1>
+        <span id="textoPrincipal">Texto 1</span><br><br><br>
+        <span class="fundoVermelho negrito">Texto 2</span><br><br> <!--posso ter mais de uma classe associada a tag-->
+        <span class="fundoVermelho">Texto 3</span>
+    </body>
+</html>

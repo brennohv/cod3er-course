@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário Via Fetch</h1>
+    <form name="usuarioForm" action="formulario" method="post">
+        <input type="text" name="nome" placeholder="Nome..." />
+        <input type="text" name="sobrenome" placeholder="Sobrenome..." />
+        <button>Salvar</button>
+    </form>
+    <div id="resultado"></div>
+    <script>
+        document.usuarioForm.onsubmit = async e => { // Quando setei um name para o formulario consigo pegar ele de forma facil, onsubmit = estou interceptando a submissao do formulario
+            e.preventDefault() // Previnindo o evento padrão 
+
+            const form = e.target // Salvando em uma const quem disparou o event, que no caso foi o form
+            const data = new FormData(form) // Criando um novo formulario com os dados que recebi do evento do formulario 
+            data.append('ajax', true)
+
+            const options = {
+                method: form.method, // o metodo setado no formulario é POST
+                body: new URLSearchParams(data) // Body se trata dos dados do formulario, acredito que que esse new URLSearchParams(data) esta fazendo um parse dos dados para o servidor
+            }
+
+            const resultado = document.getElementById('resultado') //Pegando a div com ID resultado 
+            fetch(form.action, options) // form.action é a url que eu quero disparar no meu BackEnd, que no caso é formulario, ja fiz uma ação em server.js para essa URL
+                .then( resp => resp.json()) // Fazendo um parse da resposta
+                .then (json => {
+                    resultado.innerHTML = JSON.stringify(json) // resultado.innerHTML = inserindo conteudo na div ;   JSON.stringify(json) Transformando o objeto json em JSON
+                })
+                .catch(e => {
+                    resultado.innerHTML = e
+                })
+        }
+    </script>
+</body>

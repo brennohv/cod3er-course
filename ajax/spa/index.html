@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Mini SPA</title>
+    <link rel='stylesheet' href='../css/estilo.css'>
+    <style>
+        nav {
+            font-size: 2em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #FFF;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body class="conteudo">
+    <nav>
+        <a href wm-link="series.html" wm-destino=".pagina">Séries</a> |
+        <a href wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
+    </nav>
+    <div class="pagina"></div>
+    <script>
+        function navegarViaAjax(url, seletor, push = true) {
+            if(!url || !seletor) return
+            const elemento = document.querySelector(seletor)
+            fetch(url)
+                .then(resp => resp.text()) //como estou trabalhando com dados em HTML, eu nao quero pegar o JSON, entao eu pego o texto do HTML atraves dessa function .text()
+                .then(html => {
+                    elemento.innerHTML = html
+                    if(push) {
+                        history.pushState({ seletor }, null, url) // O primeiro parametro dessa function é o estado, sempre em objeto { } , 2 é o titulo da pagina, 3 url
+                        // se estiver true ele adiciona mais 1 registro no historico
+                    }
+                })
+        }
+
+        document.querySelectorAll('[wm-link]').forEach(link => {
+            const urlLink = link.attributes['wm-link'].value // pegando o valor de wm-link e guardado em urlLink
+            const seletorDestino = link.attributes['wm-destino'].value // pegando o valor de wm-destino e guardado em seletorDestino
+
+            link.onclick = e => {
+                e.preventDefault()
+                navegarViaAjax(urlLink, seletorDestino)
+            }
+        })
+
+        window.onpopstate = e => { // Voce tem uma pilha no historico de navegação, e quando voce volta voce vai tirando os elementos da pilha. WINDOW.ONPOPSTATE = estou tirando um elemento de estado de navegação
+            if(e.state) { // se e.state estiver presente 
+                navegarViaAjax(window.location.href, e.state.seletor, false) // como tirei o ultimo da pilha, estou chamando a function, coloquei a url sendo a da penultima pagina com window.location.href, 
+                // 2 parametro da function como salvei o seletor dentro da function navegarViaAjax, ele obtem os dados da pagina por lá. 
+                // false é para nao salvar as voltas no historico 
+            }
+        }
+    </script>
+</body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>Elemento</div>
+    <script>
+        const item = document.querySelector('div')
+        item.style.position = 'absolute'
+
+        item.onmousemove = e => { // no movimento do mouse
+            const item = e.target // div quem disparou o event 
+            item.style.cursor = 'move' // quando o cursor for no mouse, em vez da seta coloque o mouse de arrastar.
+            if (e.buttons) { // Se o evento tiver uma clicada ficara diferente de 0, entao dara verdadeiro.
+                item.style.top = `${e.clientY - (item.clientHeight / 2)}px`  
+            // e.target.style.top = Quero setar a posição de onde ela esta em relação a topo.
+            // e.clientY = fornece a coordenada vertical do cliente dentro da aplicacão em que o evento ocorreu (ao contrário da coordenada que pertence a página). 
+            // item.clientHeight / 2 = altura interna de um elemento em pixels / 2. Em outras palavras quando ocorrer o evento vai colocar o mouse no meio da DIV
+                item.style.left = `${e.clientX - (item.clientWidth / 2)}px`
+            }
+        }
+    </script>
+</body>

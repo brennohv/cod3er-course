@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <p>Texto Inicial</p>
+    </div>
+    <script>
+        const div = document.querySelector('div')
+        div.innerHTML = 'Texto Alterado' // innerHTML substitui tudo que esta dentro do elemento 
+       // div.outerHTML = 'Texto Alterado' // outerHTML substitui até o elemento que no caso é a div, agora so existe o texto.
+       div.insertAdjacentHTML('beforebegin', '<p>Antes Início</p>') // insertAdjacentHTML('quando' , e o HTML) nesse exemplo pedi para colocar antes de começar a div.
+       div.insertAdjacentHTML('afterbegin', '<p>Depois Início</p>') // colocando um conteudo dentro da div 
+       div.insertAdjacentHTML('beforeend', '<p>Antes fim</p>') // colocando dentro na ultima posição 
+       div.insertAdjacentHTML('afterend', '<p>Depois Fim</p>') // colocando depois de acabar a div
+
+       // somente texto (sem tags)
+       console.log(div.innerText) 
+    </script>
+</body>
+
+</html>

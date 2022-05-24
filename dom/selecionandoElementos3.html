@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        console.log(document.forms) //colection de formularios 
+        console.log(document.forms[0]) //acessando com o operador destruction[0]
+        console.log(document.getElementsByName('pesquisa')) // Acessando diretamente pelo name, retorna uma Node list.
+        console.log(document.pesquisa) //Posso acessar diretamente pelo document.name 
+        console.log(document.pesquisa.q) //Acessando o input dentro de form 
+        document.pesquisa.q.value = 'Linux Brasil' // Mudando o valor de q a partir do value 
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/axios.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Axios Get/Post</h1>
+    <div id="get"></div>
+    <div id="post"></div>
+
+    <script>
+        function exibirResultados(id, dados) {
+            const texto = JSON.stringify(dados) // Transformando em string os dados passados por parametro da function
+            document.getElementById(id).innerHTML = texto // pegando o elemento por ID, inserindo conteudo texto que ja foi feito parse
+        }
+
+        axios.get('parOuImpar', {
+            params: {
+                numero: 6
+            }
+        }).then(resp => exibirResultados('get', resp.data))
+
+        axios.post('formulario', {
+            nome: 'Joao',
+            sobrenome: 'Macaco'
+        }).then(resp => exibirResultados('post', resp.data)) // resp.data eu pego os dados ja com parse
+    </script>
+</body>

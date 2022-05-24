@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box; /* Inclui borda no tamanho da box, seletor universal * */ 
+}
+
+@font-face {
+    font-family: 'Pixel';
+    src: url('../fonts/Pixel.ttf') /* Cada pasta que eu saia preciso colocar ../  , aqui no caso sai de uma pasta entao so coloco ../ */
+}
+
+[wm-flappy] {
+    position: relative ; /* Relative ele leva em considereção o elemento anterior. left, top, right */
+    border: 5px solid dodgerblue;
+    height: 700px;
+    width: 1200px;
+    margin: 15px;
+    background-color:deepskyblue ;
+    overflow: hidden; /* Qualquer coisa que esteja fora da div seja escondido */
+}
+
+.passaro {
+    position: absolute; /* Passa por cima de outros elementos, posição absoluta. */
+    width: 60px;
+    left: calc(50% - 30px);
+    bottom: 50%;
+}
+
+.par-de-barreiras {
+    position: absolute; /* Passa por cima de outros elementos, posição absoluta. */
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Informei que vai ser editado por column */
+    justify-content: space-between;
+}
+
+.barreira {
+    display: flex;
+    flex-direction: column; /* Main axis vai ser por colunas */
+    align-items: center; /* Editando cross axis,  no centro */
+}
+
+.barreira .borda {
+    height: 30px;
+    width: 130px;
+    background: linear-gradient(90deg, #639301, #a5e82e);
+    border: 2px solid #000;
+}
+
+.barreira .corpo {
+    height: 150px;
+    width: 110px;
+    background: linear-gradient(90deg, #639301, #a5e82e);
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+}
+
+.progresso {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: Pixel;
+    font-size: 50px;
+}

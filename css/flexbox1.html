@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #01</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+            margin: 5px;
+        }
+
+        .big {
+            font-size: 1.5em; /* 50% a mais com base na fonte do pai */
+        }
+
+        .flex-container {
+            display: flex; /* Para ativar o flexbox preciso colocar DISPLAY: FLEX; */
+            flex-direction: column; /* Flexbox é de 1 dimensao, você tem que escolher, ou trabalha por colunas(Column) ou linhas(Row). */
+            flex-direction: column-reverse; /*Aqui informei que quero que seja por colunas e reverta o conteudo, 10, 9, 8, 7, 6, .... */
+            flex-direction: row-reverse; /* Informei que é por linhas e reverta o conteudo igual o acima, porém, fazendo um float para direita. */
+            flex-direction: row;
+            width: 50%; /* Por padrão, o quando o conteiner acaba, o flex continua na mesma linha, assim temos que colocar para ele quebrar a linha */
+            height: 200px;
+            flex-wrap: wrap; /* Informei que quebrasse a linha assim que acabasse a largura. */
+            flex-wrap: wrap-reverse; /* Linha de cima vai para baixo e de baixo para cima */
+            flex-flow: row wrap; /* -FLOW é mistura do flex-wrap e flex-direction. */
+            flex-flow: column-reverse wrap;
+            flex-flow: row wrap;
+
+            /* Alinhamento Main Axis(Eixo principal) */
+            justify-content: flex-start; /* Informei que ele deve começar do start.     Start = direita      End = esquerda */
+            justify-content: flex-end; /* Informei que ele deve começar do end, porém como a linha de cima esta toda preenchida, so vai ser visivel essa prop. na linha de baixo. */
+            justify-content: center; /* Centralizando o conteudo */
+            justify-content: space-around; /* Dando espaço entre os elementos, fazendo com que eles fiquem distribuidos de uma forma uniforme. */
+            justify-content: space-between; /* Coloca os elementos na extremidades, deixando espaço somente no meio dos itens. */
+
+            /* Alinhamento Cross Axis(Eixo secundario) */
+            height: 400px;
+            align-items: stretch; /* Alinhamento Padrão do Flexbox */
+            align-items: baseline; /* Alinha pela base das fontes */
+            align-items: flex-start; /* Alinha pela parte superior do item */
+            align-items: flex-end; /* Alinha pela parte inferir do item */
+            align-items: center; /* Alinha centralizando so itens */
+
+            /* Alinhamento de mais de uma linha */
+            align-content: flex-start;
+            align-content: flex-end;
+            align-content: center;
+            align-content: space-around;
+            align-content: space-between;
+            
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel big">3</div>
+        <div class="tag nolabel">4</div>
+        <div class="tag nolabel">5</div>
+        <div class="tag nolabel">6</div>
+        <div class="tag nolabel">7</div>
+        <div class="tag nolabel">8</div>
+        <div class="tag nolabel">9</div>
+        <div class="tag nolabel">10</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

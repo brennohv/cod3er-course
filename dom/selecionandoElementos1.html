@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        document.getElementById('primeiro').classList.add('destaque') /* Retorna um HTML colection por ID, que nao é um array. */
+
+        const divs = document.getElementsByTagName('div') // Retorna um HTML colection dos elementos, que nao é um array 
+        Array.from(divs).forEach(e => e.classList.remove('destaque')) /* Pegando esse HTML colection, e transformando em um array com a propriedade FROM() */
+
+        const divsArray = [...divs] /* Outra forma de transformar em array é usando o operador spread, ele vai espalhar os elementos nesse novo array. */
+        divsArray.forEach(e => e.classList.add('destaque'))
+
+        const ultimosElementos = document.getElementsByClassName('ultimo') /* Retorna um HTML colection por class */
+
+        // O for...of percorre quaisquer elementos iteráveis, como Arrays, Sets e, inclusive, Maps. Ele também aplica em cima destes uma determinada função callback a todos os elementos.
+        /* Como o document.getElementsByClassName('ultimo') vai retornar uma coleção de todos os elementos com a tag 'ultimo' e não sabemos necessariamente como essa coleção vai estar armazenada, 
+        o professor optou pelo uso de um método mais abrangente como o for...of. */
+
+        for(let e of ultimosElementos) { /* For of faz um laço em cima dos valores e nao do indice */
+            e.classList.remove('destaque') 
+        }
+    </script>
+</body>
+</html>

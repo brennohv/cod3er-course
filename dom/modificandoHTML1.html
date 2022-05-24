@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <script>
+        const body = document.querySelector('body') //Acessando o body 
+
+        const div1 = document.createElement('div') // Criando um elemento 'div' dentro de body atraves do operador .createElement()
+        div1.classList.add('destaque') // Adicionando um Class a div
+        div1.innerHTML = 'Primeiro' // inserindo o conteudo da div com innerHTML = ' CONTEUDO '
+
+        const div2 = document.createElement('div') // Criando outro elemento div
+        div2.setAttribute('wm-atributo', 'valor')
+        div2.innerHTML = 'Segundo'
+
+        const p = document.createElement('p') // Criando outro elemento paragrafo
+        p.innerHTML = 'Terceiro'
+        const div3 = document.createElement('div')
+        div3.appendChild(p) // Inserindo o p dentro da div3, na ultima posição do pai 
+
+        body.appendChild(div1)
+        body.appendChild(div2)
+        body.insertBefore(div3, body.childNodes[0]) // inserindo de uma forma mais cirurgica, colocando ele na posição de indice 0
+
+        const texto = document.createTextNode('Antes...') // Criando um text
+        div3.insertBefore(texto, div3.childNodes[0]) // insertBefore = inserindo o texto antes do filho de indice 0
+
+        const div4 = div3.cloneNode(true) // Criando um clone atraves do cloneNode(true ou false) true= clona os filhos   false= sem os filhos
+
+        body.appendChild(div4) // Adicionando um filho
+        body.removeChild(div3) // removendo um filho 
+    </script>
+</body>
+
+</html>

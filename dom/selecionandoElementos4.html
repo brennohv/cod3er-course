@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        function log() {
+            console.log(this)
+        }
+
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        // CONSIGO VER A AÇÃO USANDO O CONSOLE DO BROWSER
+
+        const lista = document.querySelector('div ul')
+        lista.log()
+        lista.parentNode.log() // pegando o elemento anterior
+        lista.childNodes.log() // pegando os filhos de div ul que são os li
+
+        const primeiro = lista.firstChild //primeiro filho, como existe um espaço da ul para o li o Html entende que existe um text antes de cada li, entao vai me retornar um text em vez do li.
+        primeiro.log() 
+        primeiro.nextSibling.log() //Aqui pego o primeiro irmao apos o text acima, agora tenho o li.
+        
+        const ultimo = lista.lastChild // last.Child = ultimo filho
+        ultimo.log()
+        ultimo.previousSibling.log() // O elemento anterior 
+
+        lista.children.log() // Com essa propriedade consigo pegar os filhos sem que venham os text junto, porem vem como HTMLcolection
+        lista.firstElementChild.log() // De fato recebo o 1 primeiro elemento que foi definido da lista, ou seja a primeira tag que foi defina.
+        lista.parentNode.previousElementSibling.log() // parentNode = é a div que envolve a ul, previousElementSibling = quero o elemento irmao anterior que no caso é a div que tem o P inicio.
+        lista.parentNode.nextElementSibling.log() // pegando o proximo elemento irmao da DIV que contem os li, que no caso é a DIV P fim .
+
+        document.querySelectorAll('div ul li').log()
+    </script>
+</body>
+
+</html>

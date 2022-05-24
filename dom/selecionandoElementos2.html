@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>              
+        document.querySelector('#primeiro').classList.add('destaque') // Diferente dos outro seletores ou posso colocar tanto id como class como elementos, porem preciso colocar os #id .class
+        // querySelector(pega o primeiro elemento passado)
+        // querySelectorAll(todos os elementos passados)
+        
+
+        const selecionar = seletor => document.querySelectorAll(seletor).forEach(e => e.classList.add('destaque')) // Ele retorna uma Node.list  
+        const deslecionar = seletor => document.querySelectorAll(seletor).forEach(e => e.classList.remove('destaque')) //// Ele retorna uma Node.list 
+
+        selecionar("div")
+        deslecionar('*') // Passando um seletor universal
+
+        selecionar(':not(#primeiro)') // Passei uma pseudo classe em que vai selecionar todas de menos a ID primeiro
+        deslecionar('*')
+
+        selecionar(':nth-child(1)') // Pseudo class quero pegar todos os primeiros filhos da pagina
+        deslecionar('*')
+
+        selecionar('div:nth-of-type(1)') // Pegar o primeiro elemento do tipo div
+        deslecionar('*')
+
+        selecionar('[wb-attrib]') // Pegando a partir de um atributo.   Eu acesso um atributo sempre por [nome do atributo]
+    </script>
+</body>
+</html>

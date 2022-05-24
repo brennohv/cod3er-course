@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        /* Atributos do proprio HTML consigo acessar com a notação ponto, e atributos personalizados consigo pelo getAttribute(), e quando colocamos nos atributos personalizados o
+        data-NOMEDOATRIBUTO eu consigo acessar eles dentro de DATASET, consigo ler quanto alterar */
+
+        const lista = document.querySelector('div ul[destino="escritório"')
+        console.log('Elemento "ul.............')
+        console.log('childNodes', lista.childNodes) // Retorna uma NodeList com TEXT entre os LI
+        console.log('childElement', lista.children) // Aqui retorna um HTMLCollection so com os LI
+        console.log('destino', lista.destino) // Nao consigo acessar um atributo personalizado diretamente, me retorna undefined
+        console.log('getAttribute', lista.getAttribute('destino')) // Para acessar um atributo personalizado preciso colocar o getAttribute
+        console.log('hasAttribute', lista.hasAttribute('destino')) // Para saber se um atributo esta ou nao presente dentro de determinado elemento, retorna verdadeiro ou falso
+        lista.setAttribute('destino', 'empresa') // setando um novo valor para destino, agora sera empresa e nao mais escritorio.
+        lista.setAttribute('status', 'aberto') // setAttribute serve para setar algo que existe e para criar um novo atributo como nesse exemplo.
+        lista.removeAttribute('destino') // Excluindo attribute
+        console.log(lista.dataset) // A linguagem espera que quando criamos attributes personalizados coloquemos o data-NOMEDOATRIBUTO, existe um tratamento diferente.
+        lista.dataset.urgencia = 4 // Setando um novo valor para o atributo personalizado data-urgencia 
+        console.log(lista.getAttribute('data-urgencia')) 
+
+        //cuidado com palavras reservadas em attribute personalizados
+
+        const label = document.querySelector('label') 
+        console.log(label.for) // Nao consigo acessar diretamente por que o for é uma palavra reservada da linguagem 
+        console.log(label.getAttribute('for')) // Assim consigo 
+
+    </script>
+</body>
+
+</html>

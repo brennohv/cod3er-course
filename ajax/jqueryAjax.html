@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Ajax com jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>jQuery Get/Post</h1>
+    <div id="get"></div>
+    <div id="post"></div>
+
+    <script>
+        function exibirResultados(id, dados) {
+            const texto = JSON.stringify(dados) // Transformando em string os dados passados por parametro da function
+            document.getElementById(id).innerHTML = texto // pegando o elemento por ID, inserindo conteudo texto que ja foi feito parse
+        }
+        // jQuery.ajax também é outra forma de referenciar 
+        $.ajax({ // $.ajax = $ assim é referenciado JQuery 
+            url: 'parOuImpar',
+            data: { // Dados para o meu servidor
+                numero: 5
+            },
+            success(data) {
+                exibirResultados('get', data)
+            }
+        })
+
+        $.ajax({
+            url: 'formulario',
+            method: 'post',
+            data: {
+                nome: 'Brenno',
+                sobrenome: 'Henrique'
+            },
+            success(data) {
+                exibirResultados('post', data)
+            },
+            error(e) {
+                exibirResultados('post', e)
+            }
+
+        })
+    </script>
+</body>

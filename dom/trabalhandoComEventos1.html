@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <!-- onclick="navegarEm5s(event)" -->
+        <a espera-um-pouco href="https://google.com.br">Google</a>
+    </div>
+    <script>
+        function navegarEm5s(e) {
+    e.preventDefault() // previnindo o comportamento padrão ocorra 
+    console.log('Saindo em 5s...')
+    setTimeout(() => {
+        const link = e.target // Dentro do evento eu tenho uma propriedade target = é o elemento HTML que disparou o evento. 
+        window.location.href = link.href // window.location.href retorna o href (URL) da página atual,  que no caso é o proprio link. Com outras palavras substitui a barra do browser 
+    }, 5000)
+}
+
+//    const a = document.querySelector('a')
+//    a.onclick = navegarEm5s
+
+const a = document.querySelector('[espera-um-pouco]') // Sempre que for usar JS, fazer um atributo personalizado e nao Class e ID.
+a.onclick = navegarEm5s
+    </script>
+</body>

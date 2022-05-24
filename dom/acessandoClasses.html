@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Classes</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        Classes
+    </div>
+    <script>
+        const div = document.querySelector('div') 
+        const classes = div.classList // Pegando uma lista de class dentro de div
+        classes.add('destaque') // Adicionando uma class dentro da Div
+        classes.remove('destaque') // Removendo uma classe atraves do operador remove
+        classes.toggle('destaque') // toggle se tiver essa class ele remove, caso nao tenha ele adiciona. Aqui ele ADICIONOU 
+        console.log(classes.contains('destaque')) // Para ver se tem algum valor setado com destaque 
+        console.log(classes.length)
+        classes.toggle('destaque') // toggle se tiver essa class ele remove, caso nao tenha ele adiciona. Aqui ele REMOVEU
+        console.log(classes.length)
+
+        classes.add('destaque1')
+        classes.add('destaque2')
+
+        console.log(classes.length)
+
+        for(let c of classes) { /* For of faz um laço em cima dos valores e nao do indice */
+            console.log(c)
+        }
+
+        classes.forEach(c => console.log(c)) 
+    </script>
+</body>
+
+</html>

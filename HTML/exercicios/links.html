@@ -1,0 +1,22 @@
+<h1>Links</h1>
+
+<!-- URL absoluta -->
+
+<a id="inicio" href="http://www.google.com.br">Google 1</a> <br>      <!-- URL ABSOLUTO SEMPRE COLOCAR HTTP -->
+<a href="http://www.google.com.br" target="_blank">Google 2</a><br><br> <!-- TARGET="BLANK" abre uma nova guia no browser-->
+
+<!-- URL relativa-->
+<a href="index.html">Voltar 1</a><br> <!-- tentando acessar o index da pasta atual -->
+<a href="/index.html">Voltar 2</a><br><br> <!-- pegar o raiz da sua aplicação independende aonde ele esteja  -->
+<a href="../../index.html">Voltar 3</a><br><br>  <!-- ../ sai de uma pasta ../ sai de outra pasta.-->
+
+<a href="mailto:brennovicentini@gmail.com"> Entre em contato com o estafeta mais fixe de Portugal</a><br> 
+<!-- Link redireciona para um Email-->
+
+<div id="noticia" style="position:absolute;top:2000px;"> <!-- Criei um conteiner com ID noticia, com CSS-->
+    <h1>Noticia Buemba!</h1>
+    <p>Nao era nada... :)</p>
+    <a href="#inicio">Voltar para incio</a> <!-- Navegando dentro da mesma pagina, usando as referencias ID-->
+</div><br>
+
+<a href="#noticia">Ir para Notícia</a>

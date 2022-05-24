@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Selectors</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        * {          /*   * = seletor universal, aplica em todo conteudo da pagina. */
+            color: #ff0;
+            background-color: #f77;
+        }
+
+        #aninhado > div {    /* #aninhado > div = quero pegar uma div que seja um filho direto de #aninhado. */
+            color: #ff0;
+            background-color: #f77;
+        }
+        
+        #aninhado section {    /* #aninhado section = quero pegar qualquer section que esteja dentro de #aninhado. */
+            color: #ff0;
+            background-color: #f77;
+        }
+        
+        p + ul {               /* p + ul = quero pegar o ul que esteja logo em seguida de p */
+            color: #ff0;
+            background-color: #f77;
+        }
+       
+        p ~ ol {              /* p ~ ol = quero pegar um ol que seja irmao de p nao importando se esta logo em seguida, so precisa ser do mesmo pai. */
+            color: #ff0;
+            background-color: #f77;
+        }
+        
+        [feira] {              /* [feira] = todos os atributos marcados com feira, e se quiser um atributo com determinado valor é so colocar [feira=valor]  */
+            color: #ff0;
+            background-color: #f77;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class='tag'>
+        <div class='tag'>
+            <p class='tag'>1</p>
+            <ul class='tag' feira='casa'>
+                <li>Arroz</li>
+                <li>Feijão</li>
+            </ul>
+            <ul class='tag' feira='escritorio empresa'>
+                <li>Café</li>
+                <li>Água</li>
+            </ul>
+            <ol id='aprovados' class='tag'>
+                <li>Maria</li>
+                <li>Pedro</li>
+                <li>Ana</li>
+            </ol>
+            <div id='aninhado' class='tag'>
+                <div class="tag">
+                    <section class='tag'>
+                        <span class='tag'>1</span>
+                        <p class='tag'>2</p>
+                        <span class='tag'>3</span>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

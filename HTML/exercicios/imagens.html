@@ -1,0 +1,116 @@
+<!-- Tag ALT  para mostrar quando nao carregar a imagem -->
+<!-- width largura, height tamanho-->
+<!-- <IMG tag usada para imagem -->
+<!-- Dentro de Picture podemos ter varias fontes, caso uma fonte nao atenda os criterios, ele procura uma outra abaixo -->
+
+<div wm-slider>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+            alt="Muro da Cidade"  
+            width="513" height="342"   
+            title="Muro da Cidade por tarso Bessa">
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif"
+        
+            alt="Intro Cod3r" height="342">
+    </p>
+
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png"
+            alt="Rio de Janeiro" height="342">
+    </p>
+
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg"
+            alt="Avatar" height="50">
+        Texto sjdajdj and jnajdnj andjnajd njandjandahbda asda b hasa d
+        asdo ajndjn ajndnand joanj dnjaondja sajbndhabhs bahsb dhab ab hbha 
+        sabndhjbadhbahb a jbshdbha bsahbd ab ab h habhdbah.
+    </p>
+
+    <p class="cidade"></p>  <!-- Coloquei a imagem dentro de CSS em Style -->
+
+    <p>
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+                media="(min-width: 60px)">
+                <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
+        </picture>
+    </p>
+</div>
+
+<style>
+    p {
+        position: absolute;
+        display: none;
+
+    }
+
+    .circular {
+        width: 513px;
+        background-color: #fff;
+    }
+
+    .texto {
+        width: 400px
+    }
+
+    .texto img {
+        margin-right: 10px 
+    }
+
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg'); /* Colocando imagem apartir de CSS */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>
+
+<script>
+    function mover(elem, inicio, fim, passo, callback) {
+        const novoInicio = inicio - passo
+        if(novoInicio >= fim) {
+            elem.style.left = novoInicio + 'px'
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+        } else{
+            callback()
+        }
+    }
+
+   /*  const p = document.querySelector('[wm-slider] > p')  //document.querySelector = seletor de consulta de documento.
+    p.style.display = 'block'
+    mover(p, 1500, -520, 5 ,() => {
+        console.log('Terminou!!')
+    }) */
+
+    function slider() {
+        const elementos = document.querySelectorAll('[wm-slider] > p')
+        const slides = Array.from(elementos)
+        exibirSlide(slides, slides[0])
+    }
+
+    function exibirSlide(slides, slide) {
+        slide.style.display = 'block'
+
+        const inicio = innerWidth   // innerWidth = largura interna
+        const fim = -slide.clientWidth
+
+        slide.style.left = `${inicio}px`
+
+        mover(slide, inicio, fim, 5 ,() => {
+            exibirSlide(slides, getProximo(slides,slide))
+        })
+    }
+
+    function getProximo(lista, atual) {
+        const i = lista.indexOf(atual) + 1
+        return i < lista.length ? lista[i] : lista[0]
+    }
+
+    slider()
+</script>

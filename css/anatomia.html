@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+        .selector {
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+            /* Multiplos valores */
+            border: solid 5px navy; /* shorthand property */
+            font-family: helvetica, sans-serif; /* Com virgula você esta dando alternativa, se a primeira nao der certo ele vai ir para segunda */
+            /* Funções */
+            width: calc(100% - 40px);
+            background-color: rgb(34, 153, 189); /* background-color = cor de fundo */
+        }
+
+        /* Usando uma pseudo-classe */
+        .selector:hover { /* :houver = quando o mouse do usuario passar em cima do componente */
+            background-color: orangered; 
+        }
+
+        /* Usando um pseudo-elemento */
+        .selector::first-letter {
+            font-size: 60px;
+            font-weight: bold;
+        }
+
+        /* Padrão de nomenclatura? */
+        /* dash-case ou camelCase? */
+    </style>
+</head>
+
+<body>
+    <div class="selector">Conteúdo</div>
+</body>
+
+</html>

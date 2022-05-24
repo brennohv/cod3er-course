@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #02</title>
+    <style>
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container div {
+            box-sizing: border-box;
+        }
+
+        .flex-container {
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+
+        .flex-container div:nth-child(3) { /* Pegando o 3 filho */
+            background-color: indianred;
+            order: 1; /* Vai ser exibido por ultimo */
+            order: 0; /* Volta a ser exibido como estava */
+            order: -1; /* Vai ser exibido primeiro que qualquer item. */
+            align-self: center; /* Align-self = alinhar o conteudo referenciado que no caso é o 3. */
+            align-self: flex-end; /* Alinhamento no centro */
+            align-self: flex-start; /* Alinhamento no incio */
+            align-self: flex-end; /* Alinhamento no final */
+            align-self: stretch; /* Alinhamento Padrão */
+        }
+
+        .flex-container div {
+            width: 100px; /* Informei que as div's vao ter uma largura de 100px */
+            flex-grow: 0; /* Flex grow é quando sobra um espaço dentro da div e você quer distribuir isso para os itens. o 0 ele nao vai crescer nada. */
+            flex-grow: 1; /* Vai dividir a mesma quantidade para todos */
+        }
+        
+        .flex-container div:nth-child(1) { /* Aqui estou referenciando o primeiro filho da div */
+            flex-grow: 2; /* Vai pegar o espaço restante e vai adicionar 2x nesse elemento. */        
+        }
+
+        .flex-container {
+            width: 300px; /* Informei que Largura da div que tem os itens vai ser menor do que todos os itens, o que vai ocasionar uma redução no tamanho dos itens */
+            flex-shrink: 1; /* Informei que a redução seja feita de forma igual entre os itens */
+        }
+
+        .flex-container div:nth-child(1) {
+            flex-shrink: 5; /* informei que esse item referenciado acima vai diminuir 5x mais que os outros */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel">3</div>
+        <div class="tag nolabel">4</div>
+    </div>
+</body>
+
+</html>

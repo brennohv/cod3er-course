@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        function ajax(config) {
+            const xhr = new XMLHttpRequest() // Acho que é a requisição ajax
+            xhr.open(config.metodo, config.url, true) //Vou abrir uma requisição referenciada no metodo que pode ser GET, 2 parametro é uma url que espero receber dentro de config, 3 se é assincrono ou nao 
+            
+            xhr.onload = e => { // quando termina de carregar os dados, recebe um evento
+                if (xhr.status === 200) { // status 200 é bem sucedida 
+                    config.sucesso(xhr.response) // Gravei em config.sucesso a resposta da requisição caso seja bem sucedida
+                } else if (xhr.status >= 400) { // status 400 é um erro 
+                    config.erro({ // passando um objeto
+                        code: xhr.status, // codigo do erro 
+                        text: xhr.statusText // texto do erro 
+                    })
+                }
+            }
+            xhr.send() // .send é que de fato vai enviar a requisição 
+        }
+
+        ajax({
+            url: "dados/estados.json",
+            metodo: "get",
+            sucesso(resposta) {
+                const estados = JSON.parse(resposta) // Tratando a resposta, fazendo um parse do Json e gravando em estados
+
+                const linhas = estados.map(estado => {
+                    const tdId = document.createElement('td')
+                    tdId.innerHTML = estado.id
+                    
+                    const tdNome = document.createElement('td')
+                    tdNome.innerHTML = estado.nome
+                    
+                    const tdSigla = document.createElement('td')
+                    tdSigla.innerHTML = estado.sigla
+                    
+                    
+                    const tr = document.createElement('tr')
+                    tr.appendChild(tdId)
+                    tr.appendChild(tdNome)
+                    tr.appendChild(tdSigla)
+
+                    return tr
+                })
+
+                const tabela = document.createElement('table')
+                linhas.forEach(linha => tabela.appendChild(linha))
+                document.body.appendChild(tabela)
+            }, 
+            erro(e) {
+                const msg = document.createTextNode(`${e.code}: ${e.text}`)
+                document.body.appendChild(msg)
+            }
+
+        })
+    </script>
+</body>

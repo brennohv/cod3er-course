@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Overflow</title>
+    <style>
+        div {
+            font-size: 40px;
+            height: 100px;
+            width: 260px;
+            border: solid 3px;
+            /* overflow: hidden; Esconde o conteudo que esta sobrando */
+            /* overflow: scroll; consigo fazer scroll no que esta sobrando */
+            overflow-x: scroll; /* Informei que quero fazer scrol so da largura */
+            overflow-y: hidden; /* Infomei que quero esconder oq esta sobrando para baixo e pra cima. */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        TudoFuncionaMuitoBemEmCSS!!!
+        Texto muito grande para caber nessa div.
+        Já pensou qual será o comportamento padrão?
+    </div>
+</body>
+</html>

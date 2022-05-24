@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tamanho Box</title>
+    <style>
+        * {
+            box-sizing: border-box; /* Usando esse seletor universal, consigo que seja aplicado para todos os elementos da minha pagina. */
+
+        }
+ 
+        body {
+            font-size: 45px;
+            margin: 0;
+        }
+
+        div {
+            background-color: blue;
+            width: 100%;
+            height: 300px;
+            padding: 100px;
+            border: solid 20px;
+            /* box-sizing: border-box;  box-sizing: border-box = informa que o padding e a borda fique dentro do tamanho da pagina. Nao é transmitida por Herança, entao nao adianta colocar ele em html ou body.  */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        O tamanho do Box é...
+    </div>
+</body>
+</html>
+
+

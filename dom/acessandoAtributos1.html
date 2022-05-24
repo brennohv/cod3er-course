@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <a href='https://www.cod3r.com.br'>Cod3r</a>
+    </div>
+    <div id='primeiro'>
+        <img src='http://files.cod3r.com.br/curso-web/logo-estreita.png' alt='logo'>
+    </div>
+    <script>
+        const img = document.querySelector('img') // Obtive a tag img
+        console.log('getAttribute', img.getAttribute('src')) // Aqui estou acessando o atributo 'src' da img com  *getAttribute* 
+        console.log('src', img.src) // Outra forma de acessar o src da img é img.src diretamente.
+        console.log('[src]', img['src']) // Outra maneira é essa 
+        console.log('alt', img.getAttribute('alt')) // Acessando outros atributos 
+
+        console.log('Elemento "img"...............')
+        console.log('NodeType', img.nodeType) // tipo do conteudo
+        console.log('NodeName', img.nodeName) // nome do conteudo
+
+        const src = img.getAttributeNode('src') //vai me dar o no que reprenta aquele atributo 
+        console.log('Atributo "src"...........')
+        console.log('NodeType', src.nodeType)
+        console.log('NodeName', src.nodeName)
+        console.log('NodeValue', src.nodeValue)
+
+        const link = document.querySelector('a')
+        console.log('Elemento "a"............')
+        console.log('href', link.href)
+        console.log('firstChild.nodeType', link.firstChild.nodeType) // pegando o primeiro filho do elemento A, que é Cod3r e do tipo 3= text
+        link.firstChild.nodeValue = 'Novo texto' // Atribuindo um novo valor para Cod3r
+        link.innerHTML = 'Texto 2' // Forma mais usada que a de cima 
+
+    </script>
+</body>
+
+</html>
